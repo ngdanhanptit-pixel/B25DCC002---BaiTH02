@@ -1,32 +1,68 @@
-# React + TypeScript + Vite
+# Ứng dụng Thời tiết 8 Thành phố Việt Nam
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Ứng dụng React + TypeScript hiển thị thời tiết hiện tại và dự báo 7 ngày cho 8 thành phố tại Việt Nam, sử dụng API Open-Meteo miễn phí, không yêu cầu API key.
 
-Currently, two official plugins are available:
+## Chức năng
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Hiển thị danh sách 8 thành phố:
+  - Hà Nội
+  - Hải Phòng
+  - Huế
+  - Đà Nẵng
+  - Nha Trang
+  - Đà Lạt
+  - TP. Hồ Chí Minh
+  - Cần Thơ
+- Làm nổi bật thành phố đang được chọn.
+- Hiển thị thời tiết hiện tại:
+  - Biểu tượng và mô tả thời tiết
+  - Nhiệt độ
+  - Độ ẩm
+  - Tốc độ gió
+  - Thời điểm cập nhật
+- Hiển thị dự báo 7 ngày: thứ/ngày, biểu tượng, nhiệt độ cao nhất và thấp nhất.
+- Có trạng thái chưa chọn thành phố, đang tải và lỗi kèm nút **Thử lại**.
+- Đổi đơn vị nhiệt độ giữa °C và °F mà không gọi lại API.
+- Giao diện responsive:
+  - Từ 768px: bố cục hai cột.
+  - Dưới 768px: bố cục xếp dọc.
+- Nền giao diện đổi theo tình trạng thời tiết, có animation nhẹ.
 
-## React Compiler
+## Công nghệ sử dụng
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- Vite
+- Oxlint
+- Open-Meteo API
 
-## Expanding the Oxlint configuration
+## Cấu trúc thư mục
+  src/
+  ├── components/
+  │   └── Forecast.tsx
+  ├── data/
+  │   └── cities.ts
+  ├── services/
+  │   └── weatherApi.ts
+  ├── types/
+  │   └── weather.ts
+  ├── utils/
+  │   ├── temperature.ts
+  │   └── weatherCode.ts
+  ├── App.tsx
+  ├── App.css
+  ├── index.css
+  └── main.tsx
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Yêu cầu cài đặt
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+Cần cài đặt trước:
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+- Node.js phiên bản 20 trở lên
+- npm
+
+Kiểm tra phiên bản:
+
+```bash
+node -v
+npm -v
